@@ -1,5 +1,5 @@
 // Import Scripts
-import "./js/index";
+import './js/index';
 
 // Import Styles
-import "./scss/theme.scss";
+import './scss/theme.scss';

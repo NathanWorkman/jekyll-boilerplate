@@ -1,1 +1,1 @@
-console.log("Jekyll Boilerplate");
+import 'bootstrap';
