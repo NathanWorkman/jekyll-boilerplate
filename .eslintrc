@@ -1,0 +1,20 @@
+{
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jquery": true
+    },
+    "extends": [
+        ".prettierrc"
+    ],
+    "plugins": [
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": [
+            "error"
+        ],
+        "import/no-extraneous-dependencies": 0
+    }
+}
