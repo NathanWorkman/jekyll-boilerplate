@@ -2,35 +2,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width" initial-scale="1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ "/images/favicons/apple-touch-icon.png" | relative_url }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ "/images/favicons/favicon-32x32.png" | relative_url }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ "/images/favicons/favicon-16x16.png" | relative_url }}">
-  <link rel="mask-icon" href="{{ "/images/favicons/safari-pinned-tab.svg" | relative_url }}" color="#5bbad5">
-
-  <link rel="stylesheet" href="{{ "/css/main.css" | relative_url }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
-
-  <link rel="manifest" href="{{ "/manifest.json" | relative_url }}">
   <meta name="theme-color" content="#ffffff">
 
+  {% for styles in site.data.webpack[0].main.css %}
+  <link rel="stylesheet" href="{{ styles | relative_url }}">
+  {% endfor %}
+
   {% seo %}
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-49196912-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-49196912-1');
-  </script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register("{{ " / worker.js, " | relative_url }}").then(function () {
-        console.log("Service Worker Registered");
-      });
-    }
-  </script>
-
 </head>

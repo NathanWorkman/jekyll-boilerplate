@@ -1,0 +1,3 @@
+{% for scripts in site.data.webpack[0].main.js %}
+<script src="{{ scripts | relative_url }}"></script>
+{% endfor %}
