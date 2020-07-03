@@ -23,8 +23,10 @@ email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   Jekyll Boilerplate is a simple boilerplate to kick out new Jekyll sites
   using Webpack for the asset pipeline.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: '' # the subpath of your site, e.g. /blog
+url: '' # the base hostname & protocol for your site, e.g. http://example.com
+
+# app_env: local
 
 # Social settings
 twitter_username: jekyllrb
@@ -34,12 +36,21 @@ github_username: jekyll
 google_tracking_id: UA-XXXXXXXX-1
 
 # Build settings
-include: ["_pages"]
+include: ['_pages']
 future: true
 incremental: true
 
+# Navigation
+nav:
+  - title: About
+    url: about
+  - title: Contact
+    url: contact
+
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
@@ -48,14 +59,25 @@ plugins:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - node_modules/
+  - package.json
+  - README.md
+  - webpack.common.js
+  - webpack.dev.js
+  - webpack.prod.js
+  - _assets
+  - yarn.lock
+  - netlify.toml
+  - postcss.config.js
+  - babel.config.json
