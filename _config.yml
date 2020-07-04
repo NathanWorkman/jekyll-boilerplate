@@ -81,3 +81,4 @@ exclude:
   - netlify.toml
   - postcss.config.js
   - babel.config.json
+  - gulpfile.js
