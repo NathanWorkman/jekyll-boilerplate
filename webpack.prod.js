@@ -16,7 +16,7 @@ module.exports = merge(common, {
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
-        // cache: true,
+        cache: true,
         parallel: true,
         sourceMap: true
       }),
@@ -24,9 +24,9 @@ module.exports = merge(common, {
       new MiniCssExtractPlugin({
         filename: '[name].[hash].css',
         chunkFilename: '[id].[hash].css'
-      })
+      }),
 
-      // new OptimizeCSSAssetsPlugin({})
+      new OptimizeCSSAssetsPlugin({})
     ]
   }
 });

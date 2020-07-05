@@ -1,18 +1,15 @@
-// const webpack = require('webpack');
 const path = require('path');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const resolve = path.resolve.bind(path, __dirname);
 
 module.exports = {
   entry: {
-    main: resolve('_assets/index.js')
+    main: resolve('assets/index.js')
   },
 
   output: {
-    path: resolve('_site/')
+    path: resolve('_site/assets/')
   },
 
   module: {
@@ -62,6 +59,5 @@ module.exports = {
       },
       prettyPrint: true
     })
-    // new CleanWebpackPlugin()
   ]
 };
