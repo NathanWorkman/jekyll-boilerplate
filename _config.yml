@@ -116,3 +116,11 @@ exclude:
   - postcss.config.js
   - babel.config.json
   - gulpfile.js
+# page_gen-dirs: false
+
+# page_gen:
+#   - data: 'blogs'
+#     template: 'blogs_index'
+#     dir: 'blogs'
+#     name: 'title'
+#     title: 'title'
