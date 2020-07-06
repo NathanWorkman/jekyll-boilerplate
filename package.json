@@ -2,15 +2,12 @@
   "name": "jekyll-boilerplate",
   "version": "1.0.0",
   "description": "Jekyll Boilerplate is my personal starter for kicking out static sites.",
-  "main": "_assets/index.js",
+  "main": "assets/index.js",
   "scripts": {
-    "clean": "bundle exec jekyll clean",
+    "clean": "gulp clean",
     "dev": "gulp develop",
-    "build": "gulp build",
-    "preview": "NODE_ENV=production gulp build",
-    "assets": "gulp assets",
-    "webpack:dev": "webpack --config webpack.dev.js",
-    "webpack:prod": "webpack --config webpack.prod.js --mode production"
+    "build": "NODE_ENV=production gulp build",
+    "preview": "NODE_ENV=production gulp build"
   },
   "repository": {
     "type": "git",
@@ -29,11 +26,8 @@
     "popper.js": "^1.16.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.4",
     "@babel/core": "^7.10.4",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.10.4",
-    "@babel/plugin-syntax-object-rest-spread": "^7.8.0",
     "@babel/preset-env": "^7.10.4",
     "@babel/register": "^7.10.4",
     "assets-webpack-plugin": "^5.0.2",
