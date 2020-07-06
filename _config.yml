@@ -23,14 +23,35 @@ email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   Jekyll Boilerplate is a simple boilerplate to kick out new Jekyll sites
   using Webpack for the asset pipeline.
+tagline: >-
+  A short tagline
 baseurl: '' # the subpath of your site, e.g. /blog
 url: '' # the base hostname & protocol for your site, e.g. http://example.com
 
-# app_env: local
+# Seo settings
+twitter:
+  username: jekyllrb
+  card: summary
+facebook:
+  app_id: 1234
+  publisher: 1234
+  admins: 1234
 
-# Social settings
-twitter_username: jekyllrb
-github_username: jekyll
+# Social Settings
+social:
+  name: Ben Balter
+  links:
+    - https://twitter.com/BenBalter
+    - https://www.facebook.com/ben.balter
+    - https://www.linkedin.com/in/BenBalter
+    - https://github.com/benbalter
+    - https://keybase.io/benbalter
+
+# Verify site ownership with search engones
+webmaster_verifications:
+  google: 1234
+  bing: 1234
+  alexa: 1234
 
 # Config / Keys / Etc
 google_tracking_id: UA-XXXXXXXX-1
@@ -57,6 +78,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-archives
 
 # Keep files
 # When clobbering the site destination, keep the selected files. Useful for
@@ -87,9 +109,7 @@ exclude:
   - node_modules/
   - package.json
   - README.md
-  - webpack.common.js
-  - webpack.dev.js
-  - webpack.prod.js
+  - webpack.config.js
   - assets
   - yarn.lock
   - netlify.toml
