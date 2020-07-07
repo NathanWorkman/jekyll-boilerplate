@@ -1,0 +1,56 @@
+// Paths
+$path-to-img: '../images' !default;
+$path-to-fonts: '../fonts' !default;
+
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+// Color system
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$primary: #007bff !default;
+$secondary: $gray-700 !default;
+$success: #28a745 !default;
+$info: #17a2b8 !default;
+$warning: #ffc107 !default;
+$danger: #dc3545 !default;
+$light: $gray-100 !default;
+$dark: $gray-900 !default;
+
+$theme-colors: () !default;
+
+$theme-colors: (
+  'black': $black,
+  'white': $white
+);
+
+// Navbar
+
+$navbar-padding-y: 1.25rem !default;
+
+$navbar-nav-link-padding-x: 1.5rem !default;
+
+$navbar-brand-font-size: 1.5rem !default;
+
+$navbar-dark-color: $white !default;
+$navbar-dark-hover-color: $white !default;
+$navbar-dark-active-color: $white !default;
+$navbar-dark-toggler-border-color: transparent !default;
+
+$navbar-light-color: $gray-700 !default;
+$navbar-light-hover-color: $primary !default;
+$navbar-light-active-color: $primary !default;
+$navbar-light-toggler-border-color: transparent !default;
