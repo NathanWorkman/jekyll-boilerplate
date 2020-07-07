@@ -65,21 +65,6 @@ let config = {
   output,
   mode: mode,
   optimization,
-  // optimization: {
-  //   // removeAvailableModules: true,
-  //   // removeEmptyChunks: true,
-  //   splitChunks: {
-  //     chunks: 'all',
-  //     cacheGroups: {
-  //       vendors: {
-  //         // test: /[\\/]node_modules[\\/]/,
-  //         name: 'vendor'
-  //         // priority: -40,
-  //         // enforce: true,
-  //       }
-  //     }
-  //   }
-  // },
   module: {
     rules: [
       {test: /\.json$/, loader: 'json-loader'},
@@ -112,6 +97,32 @@ let config = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)(\?v=[0-9.]+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/'
+            }
+          }
+        ],
+        include: [resolve('node_modules'), resolve('assets/images')]
+      },
+      {
+        test: /\.(eot|otf|ttf|woff|woff2)(\?v=[0-9.]+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ],
+        include: [resolve('node_modules'), resolve('assets/fonts')]
       }
     ]
   },
