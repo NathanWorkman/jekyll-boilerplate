@@ -58,7 +58,7 @@ google_tracking_id: UA-XXXXXXXX-1
 
 # Build settings
 include: ['_pages']
-permalink: pretty
+permalink: /posts/:title:output_ext
 future: true
 incremental: true
 collections_dir: collections
@@ -69,6 +69,8 @@ collections:
 
 # Navigation
 nav:
+  - title: Posts
+    url: posts
   - title: About
     url: about
   - title: Contact
