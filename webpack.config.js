@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -13,6 +14,13 @@ const assetPlugin = new AssetsPlugin({
     return `[${JSON.stringify(assets)}]`;
   },
   prettyPrint: true
+});
+
+const providePlugin = new webpack.ProvidePlugin({
+  jQuery: 'jquery',
+  $: 'jquery',
+  'window.jQuery': 'jquery',
+  Popper: ['popper.js', 'default']
 });
 
 if (process.env.NODE_ENV === 'production') {
@@ -39,7 +47,7 @@ if (process.env.NODE_ENV === 'production') {
       new OptimizeCSSAssetsPlugin({})
     ]
   };
-  plugins = [assetPlugin];
+  plugins = [assetPlugin, providePlugin];
 } else {
   mode = 'development';
   output = {
@@ -51,6 +59,7 @@ if (process.env.NODE_ENV === 'production') {
   optimization = {};
   plugins = [
     assetPlugin,
+    providePlugin,
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[name].css'
