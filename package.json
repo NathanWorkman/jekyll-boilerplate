@@ -7,7 +7,8 @@
     "clean": "gulp clean",
     "dev": "gulp develop",
     "build": "NODE_ENV=production gulp build",
-    "preview": "NODE_ENV=production gulp build"
+    "preview": "NODE_ENV=production gulp build",
+    "webpack": "webpack -d --progress"
   },
   "repository": {
     "type": "git",
