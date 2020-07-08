@@ -1,23 +1,20 @@
 ---
 layout: default
 ---
+{% if page.header %}
 <div class="jumbotron mb-0">
   <div class="py-5">
     <div class="container py-5">
       <div class="row">
         <div class="col-lg-6">
-          <h1>{% if page.header %}{{ page.header }}{% else %}{{ page.title }}{% endif %}</h1>
-          <p>{% if page.subheader %}{{ page.subheader }}{% endif %}</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3 col-6">
-          <hr class="my-4">
+          <h1>{{ page.header }}</h1>
+          {% if page.subheader %}<p>{{ page.subheader }}</p>{% endif %}
         </div>
       </div>
     </div>
   </div>
 </div>
+{% endif %}
 <div class="container my-5">
   <article class="row">
     <div class="col-lg-8">

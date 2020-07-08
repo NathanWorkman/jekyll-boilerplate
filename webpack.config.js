@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -13,6 +14,13 @@ const assetPlugin = new AssetsPlugin({
     return `[${JSON.stringify(assets)}]`;
   },
   prettyPrint: true
+});
+
+const providePlugin = new webpack.ProvidePlugin({
+  jQuery: 'jquery',
+  $: 'jquery',
+  'window.jQuery': 'jquery',
+  Popper: ['popper.js', 'default']
 });
 
 if (process.env.NODE_ENV === 'production') {
@@ -39,7 +47,7 @@ if (process.env.NODE_ENV === 'production') {
       new OptimizeCSSAssetsPlugin({})
     ]
   };
-  plugins = [assetPlugin];
+  plugins = [assetPlugin, providePlugin];
 } else {
   mode = 'development';
   output = {
@@ -51,6 +59,7 @@ if (process.env.NODE_ENV === 'production') {
   optimization = {};
   plugins = [
     assetPlugin,
+    providePlugin,
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[name].css'
@@ -65,21 +74,6 @@ let config = {
   output,
   mode: mode,
   optimization,
-  // optimization: {
-  //   // removeAvailableModules: true,
-  //   // removeEmptyChunks: true,
-  //   splitChunks: {
-  //     chunks: 'all',
-  //     cacheGroups: {
-  //       vendors: {
-  //         // test: /[\\/]node_modules[\\/]/,
-  //         name: 'vendor'
-  //         // priority: -40,
-  //         // enforce: true,
-  //       }
-  //     }
-  //   }
-  // },
   module: {
     rules: [
       {test: /\.json$/, loader: 'json-loader'},
@@ -112,6 +106,32 @@ let config = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)(\?v=[0-9.]+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/'
+            }
+          }
+        ],
+        include: [resolve('node_modules'), resolve('assets/images')]
+      },
+      {
+        test: /\.(eot|otf|ttf|woff|woff2)(\?v=[0-9.]+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ],
+        include: [resolve('node_modules'), resolve('assets/fonts')]
       }
     ]
   },

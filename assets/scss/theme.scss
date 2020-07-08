@@ -1,1 +1,11 @@
-@import '~bootstrap';
+// Bootstrap functions
+@import '~bootstrap/scss/functions';
+
+// Custom variables and BS overides
+@import 'variables';
+
+// Bootstrap core
+@import '~bootstrap/scss/bootstrap';
+
+// Core
+@import 'theme/theme';

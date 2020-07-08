@@ -8,7 +8,6 @@ const webpack = require('webpack-stream');
 const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
 
-// const execFile = util.promisify(require('child_process').exec);
 const resolve = path.resolve.bind(path, __dirname);
 
 // Run Webpack to build static CSS and JS assets.
