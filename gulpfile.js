@@ -6,7 +6,10 @@ const {exec} = require('child_process');
 const browserSync = require('browser-sync').create();
 const webpack = require('webpack-stream');
 const imagemin = require('gulp-imagemin');
+const webp = require('imagemin-webp');
+const extReplace = require('gulp-ext-replace');
 const htmlmin = require('gulp-htmlmin');
+const cache = require('gulp-cache');
 
 const resolve = path.resolve.bind(path, __dirname);
 
@@ -18,12 +21,29 @@ function assets() {
     .pipe(gulp.dest('_site/assets'));
 }
 
+// Convert Images
+function convertImages() {
+  return gulp
+    .src('assets/images/**')
+    .pipe(
+      cache(
+        imagemin([
+          webp({
+            quality: 75
+          })
+        ])
+      )
+    )
+    .pipe(extReplace('.webp'))
+    .pipe(gulp.dest('_site/assets/images/'));
+}
+
 // Optimize Images
 function images() {
   return gulp
     .src('assets/images/**')
-    .pipe(imagemin())
-    .pipe(gulp.dest('_site/images/'));
+    .pipe(cache(imagemin()))
+    .pipe(gulp.dest('_site/assets/images/'));
 }
 
 // Build Jekyll
@@ -92,10 +112,24 @@ function watch(cb) {
         '_data/webpack.json'
       ]
     },
-    gulp.series(assets, build, reload)
+    gulp.series(assets, build, images, convertImages, reload)
   );
 }
 
 exports.clean = gulp.series(clean);
-exports.develop = gulp.series(assets, build, images, serve, watch);
-exports.build = gulp.series(clean, assets, build, images, minifyHtml);
+exports.develop = gulp.series(
+  assets,
+  build,
+  images,
+  convertImages,
+  serve,
+  watch
+);
+exports.build = gulp.series(
+  clean,
+  assets,
+  build,
+  images,
+  convertImages,
+  minifyHtml
+);
